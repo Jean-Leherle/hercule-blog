@@ -35,6 +35,15 @@ const app = {
         }
         console.log(base.getHour())
     },
+    pseudoGenerator: function (firstName, dptNumber){
+        //return 'Toto-du-10'
+        return `${firstName}-du-${dptNumber}`
+        
+    },
+    showTypicalKikooPseudo: function(){
+        document.getElementById('profil-name').innerText=app.pseudoGenerator(app.hercule.name,app.hercule.department);
+    },
+   
 
 
     init: function () {
@@ -44,6 +53,7 @@ const app = {
         app.createTitle();
         app.displayAllWorks();
         app.isAvailable();
+        app.showTypicalKikooPseudo();
 
     }//fin de init
 
