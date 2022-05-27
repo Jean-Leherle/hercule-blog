@@ -15,6 +15,13 @@ const app = {
         titleElement.innerText=`Vous consultez le profil de ${app.hercule.name}`;
         document.getElementById('header-banner').appendChild(titleElement);
     },
+    displayAllWorks: function() {
+        
+        for( let counter=0;counter<document.querySelectorAll('.panel--work').length;counter++){
+            base.displayWork(counter)
+        }
+    },
+
 
 
     init: function () {
@@ -22,6 +29,7 @@ const app = {
         base.printFriends(app.friendList);
         base.setBestFriend(app.friendList[0]);
         app.createTitle();
+        app.displayAllWorks();
 
     }//fin de init
 
