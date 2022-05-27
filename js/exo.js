@@ -48,6 +48,15 @@ const app = {
             document.getElementById('header-banner').classList.toggle('banner--open');
         })
     },
+    formAlert: function () {
+        const fromElement=document.getElementById('contact')
+        fromElement.addEventListener('click', (event)=>{
+            event.preventDefault();
+            alert('Hercule ne souhaite pas être dérangé');
+        })
+        
+    },
+
 
 
     init: function () {
@@ -59,6 +68,7 @@ const app = {
         app.isAvailable();
         app.showTypicalKikooPseudo();
         app.menuToggle();
+        app.formAlert();
 
     } //fin de init
 
