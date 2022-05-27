@@ -56,6 +56,17 @@ const app = {
         })
         
     },
+    displayVote: function(){
+        const herculeVote= Math.round((base.vote.hercule*100/(base.vote.hercule+base.vote.cesar)))+'%'  //calcul du vote avec arrondie en prenant uniquement cesar et hercule en compte, 
+        const cesarVote= Math.round((base.vote.cesar*100/(base.vote.hercule+base.vote.cesar)))+'%'      //si il y a d'autre participant utiliser un for( key in vote)
+        herculeVoteElement=document.getElementById('trends-hercule');
+        herculeVoteElement.querySelector('.people__popularity').innerText=herculeVote;
+        cesarVoteElement=document.getElementById('trends-cesar');
+        cesarVoteElement.querySelector('.people__popularity').innerText=cesarVote;
+        herculeVoteElement.querySelector('.people__bar').style.width=herculeVote
+        cesarVoteElement.querySelector('.people__bar').style.width=cesarVote
+
+    },
 
 
 
@@ -69,6 +80,7 @@ const app = {
         app.showTypicalKikooPseudo();
         app.menuToggle();
         app.formAlert();
+        app.displayVote();
 
     } //fin de init
 
