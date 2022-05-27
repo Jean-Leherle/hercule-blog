@@ -7,6 +7,7 @@ const app = {
         department: 75,
         arm: 60.5,
         inRelationship: true,
+        
     },//fin de hercule
     friendList: ['Jupiter', 'Junon', 'Alcmène','Déjanire'],
     createTitle: function(){
@@ -17,11 +18,23 @@ const app = {
     },
     displayAllWorks: function() {
         
-        for( let counter=0;counter<document.querySelectorAll('.panel--work').length;counter++){
-            base.displayWork(counter)
+        for( let counter=0;counter<document.querySelectorAll('.panel--work').length;counter++){  //boucle autant de fois qu'il y a d'article (11 en l'occurence)
+            base.displayWork(counter);
         }
     },
-
+    isAvailable: function(){
+        const availableTime= [8,20] //idéalement à rattacher à l'objet hercule mais l'affichage par la fonction base.fillProfil ne le permet pas
+        const avaibilityElem =document.getElementById('availability');
+        if (base.getHour()>=availableTime[0]&&base.getHour()<availableTime[1]) {
+            avaibilityElem.innerText='disponible';
+            avaibilityElem.classList.remove('off');
+        }
+        else{
+            avaibilityElem.innerText=`indisponible de ${availableTime[1]}h à ${availableTime[0]}h`;
+            avaibilityElem.classList.add('off');
+        }
+        console.log(base.getHour())
+    },
 
 
     init: function () {
@@ -30,6 +43,7 @@ const app = {
         base.setBestFriend(app.friendList[0]);
         app.createTitle();
         app.displayAllWorks();
+        app.isAvailable();
 
     }//fin de init
 
