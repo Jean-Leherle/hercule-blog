@@ -58,15 +58,32 @@ const app = {
     },
     displayVote: function(){
         const herculeVote= Math.round((base.vote.hercule*100/(base.vote.hercule+base.vote.cesar)))+'%'  //calcul du vote avec arrondie en prenant uniquement cesar et hercule en compte, 
-        const cesarVote= Math.round((base.vote.cesar*100/(base.vote.hercule+base.vote.cesar)))+'%'      //si il y a d'autre participant utiliser un for( key in vote)
+        const cesarVote= Math.round((base.vote.cesar*100/(base.vote.hercule+base.vote.cesar)))+'%'      
         herculeVoteElement=document.getElementById('trends-hercule');
         herculeVoteElement.querySelector('.people__popularity').innerText=herculeVote;
         cesarVoteElement=document.getElementById('trends-cesar');
         cesarVoteElement.querySelector('.people__popularity').innerText=cesarVote;
         herculeVoteElement.querySelector('.people__bar').style.width=herculeVote
         cesarVoteElement.querySelector('.people__bar').style.width=cesarVote
+    },
+    displayActivities: function(){
+        activitiesElement= document.getElementById('activities')
+        activitiesElement.classList.remove('hidden');
+        taskListElemnt=activitiesElement.querySelector('.tasks');
+
+        
+        for(key in base.activities){
+            if(base.activities[key].author==='Hercule'&&base.activities[key].finished){
+                taskElement=document.createElement('li');
+                console.log(taskListElemnt)
+                taskElement.innerText=base.activities[key].title;
+                taskListElemnt.appendChild(taskElement)
+            }
+
+        }
 
     },
+
 
 
 
@@ -81,6 +98,7 @@ const app = {
         app.menuToggle();
         app.formAlert();
         app.displayVote();
+        app.displayActivities();
 
     } //fin de init
 
